@@ -30,6 +30,7 @@ module.exports = {
     "import/first": "error",
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
+    "react/prop-types": "off",
     "simple-import-sort/exports": "error",
     // For TS types sorting
     "simple-import-sort/imports": "error",
