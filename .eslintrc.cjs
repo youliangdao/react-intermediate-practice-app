@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    node: true,
   },
   extends: [
     "eslint:recommended",
@@ -23,28 +24,29 @@ module.exports = {
     "simple-import-sort",
     "import",
     "unused-imports",
+    "sort-keys-custom-order",
   ],
-  settings: {
-    react: {
-      version: "detect",
-    },
-  },
   rules: {
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "simple-import-sort/exports": "error",
+    // For TS types sorting
+    "simple-import-sort/imports": "error",
     // For JS objects sorting
     "sort-keys-custom-order/object-keys": [
       "error",
       { orderedKeys: ["id", "name", "title"] },
     ],
-    // For TS types sorting
     "sort-keys-custom-order/type-keys": [
       "error",
       { orderedKeys: ["id", "name", "title"] },
     ],
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error",
-    "import/first": "error",
-    "import/newline-after-import": "error",
-    "import/no-duplicates": "error",
     "unused-imports/no-unused-imports": "error",
+  },
+  settings: {
+    react: {
+      version: "detect",
+    },
   },
 };
