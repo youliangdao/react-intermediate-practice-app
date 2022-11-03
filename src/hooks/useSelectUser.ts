@@ -22,5 +22,6 @@ export const useSelectUser = () => {
   return {
     onSelectUser,
     selectedUser,
+    setSelectedUser,
   };
 };

@@ -4,12 +4,14 @@ import { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { User } from "../types/api/user";
+import { useLoginUser } from "./useLoginUser";
 import { useMessage } from "./useMessage";
 
 export const useAuth = () => {
   const history = useHistory();
   const [loading, setLoading] = useState(false);
   const { showMessage } = useMessage();
+  const { setLoginUser } = useLoginUser();
 
   const login = useCallback((id: string) => {
     setLoading(true);
@@ -21,6 +23,8 @@ export const useAuth = () => {
             title: "ログインに成功しました",
             status: "success",
           });
+          const isAdmin = res.data.id === 10 ? true : false;
+          setLoginUser({ ...res.data, isAdmin });
           history.push("/home");
         } else {
           showMessage({
