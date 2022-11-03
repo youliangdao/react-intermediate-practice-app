@@ -12,14 +12,17 @@ import {
 } from "@chakra-ui/react";
 import React, { FC, memo } from "react";
 
+import { User } from "../../../types/api/user";
+
 type Props = {
   isOpen: boolean;
   onClose: () => void;
+  user: User | undefined;
 };
 
 // eslint-disable-next-line react/display-name
 const UserDetailModal: FC<Props> = memo((props) => {
-  const { isOpen, onClose } = props;
+  const { isOpen, onClose, user } = props;
   return (
     <Modal
       {...{ isOpen, onClose }}
@@ -35,19 +38,19 @@ const UserDetailModal: FC<Props> = memo((props) => {
           <Stack spacing={4}>
             <FormControl>
               <FormLabel>名前</FormLabel>
-              <Input value="テストだよん" isReadOnly />
+              <Input value={user ? user.username : ""} isReadOnly />
             </FormControl>
             <FormControl>
               <FormLabel>フルネーム</FormLabel>
-              <Input value="テストテストテストだよん" isReadOnly />
+              <Input value={user ? user.name : ""} isReadOnly />
             </FormControl>
             <FormControl>
               <FormLabel>MAIL</FormLabel>
-              <Input value="aaaaaa@example.com" isReadOnly />
+              <Input value={user ? user.email : ""} isReadOnly />
             </FormControl>
             <FormControl>
               <FormLabel>TEL</FormLabel>
-              <Input value="000-0000-0000" isReadOnly />
+              <Input value={user ? user.phone : ""} isReadOnly />
             </FormControl>
           </Stack>
         </ModalBody>
